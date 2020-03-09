@@ -19,9 +19,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.shortcuts import redirect
 
-
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
     path("home/", include("home.urls")),
+    path("home/blog", include("blog.urls")),
     path("", lambda request: redirect("/home/")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
