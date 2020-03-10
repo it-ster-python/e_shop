@@ -1,0 +1,36 @@
+{% load static %}
+<section class="ftco-section testimony-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <h1 class="big">Testimony</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 ftco-animate">
+                <div class="row ftco-animate">
+                    <div class="col-md-12">
+                        <div class="carousel-testimony owl-carousel ftco-owl">
+                            {% for slide in slider %}
+                            <div class="item">
+                                <div class="testimony-wrap py-4 pb-5">
+                                    <div class="user-img mb-4" style="background-image: url({% static 'e_shop/img/'|add:slide.image %})">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text text-center">
+                                        <p class="mb-4">{{ slide.text }}</p>
+                                        <p class="name">{{ slide.name }}</p>
+                                        <span class="position">{{ slide.position }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
