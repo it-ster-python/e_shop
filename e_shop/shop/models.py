@@ -16,11 +16,6 @@ def sale_price(value):
     if 0 < value > 100:
         raise ValidationError(f"Sale '{value}' invalid ")
 
-class DeleteManager(models.query.QuerySet):
-    def delete(self):
-        for image in self:
-            image.delete()
-
 class DressSize(models.Model):
     asian_size = [
         ["S", "Small"],
@@ -62,7 +57,12 @@ class DressSize(models.Model):
 class Product(models.Model):
 
     def path_upload(self, filename):
-        return os.path.join("products", strftime("%Y/%m"), self.name, filename)
+        return os.path.join(
+            "products",
+            strftime("%Y/%m"),
+            self.name.replace(" ", "_"),
+            filename
+        )
 
     size = models.ForeignKey(DressSize, related_name="products", on_delete=models.CASCADE)
     name = models.CharField(max_length=75, verbose_name="Product name.")
@@ -72,9 +72,6 @@ class Product(models.Model):
     count = models.PositiveSmallIntegerField(verbose_name="Counts dresses.")
     image = models.ImageField(upload_to=path_upload, verbose_name="Product image.")
     is_active = models.BooleanField(default=True, verbose_name="Active.")
-
-    objects = models.Manager()
-    objects = DeleteManager.as_manager()
 
     class Meta:
         db_table = "products"

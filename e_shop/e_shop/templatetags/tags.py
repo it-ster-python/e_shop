@@ -15,5 +15,8 @@ def add_percent(value):
 def add_dollar(value):
     return "$" + str(value)
 
-    # из блог хтмл извлечь все из блог
-    # сделать новое приложение блог
+
+@register.simple_tag
+def media(value):
+    print(dir(value))
+    return "/media/" + value.name
