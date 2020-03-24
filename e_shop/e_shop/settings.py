@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "e_shop",
     "home",
     "blog",
+    "shop",
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "e_shop", "static")
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "e_shop", "media")
