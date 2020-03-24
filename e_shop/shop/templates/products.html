@@ -1,1 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block products %}
+{% include "shop_modules/backgr.html" %}
+
+
+<section class="ftco-section bg-light">
+    <div class="container-fluid">
+        {% include "shop_modules/allproducts.html" %}
+        {% include "shop_modules/pages.html" %}
+    </div>
+</section>
+
+{% include "shop_modules/subscribe.html" %}
+{% endblock products %}

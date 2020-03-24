@@ -1,11 +1,9 @@
 from django.contrib import admin
 from shop import models
 
-
 class AdminDressSize(admin.ModelAdmin):
 
-    list_display = ("name", "international")
-
+    list_display = ("name", "internetional")
 
 class AdminProduct(admin.ModelAdmin):
 
@@ -13,9 +11,8 @@ class AdminProduct(admin.ModelAdmin):
         "name",
         "price",
         "count",
-        "is_active",
+        "is_active"
     )
-
 
 admin.site.register(models.DressSize, AdminDressSize)
 admin.site.register(models.Product, AdminProduct)
