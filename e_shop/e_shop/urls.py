@@ -23,10 +23,14 @@ from django.shortcuts import redirect
 from django.core.files import File
 
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("home/", include("home.urls")),
-    path("blog/", include("blog.urls")),
-    path("shop/", include("shop.urls")),
-    path("", lambda request: redirect("/home/")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("home/", include("home.urls")),
+        path("blog/", include("blog.urls")),
+        path("shop/", include("shop.urls")),
+        path("", lambda request: redirect("/home/")),
+    ]
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
