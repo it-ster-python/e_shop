@@ -1,21 +1,21 @@
 {% load static tags %}
 <div class="row">
-    {% for list in allprod %}
+    {% for prod in allprod %}
     <div class="col-sm col-md-6 col-lg-3 ftco-animate">
         <div class="product">
-            <a href="#" class="img-prod"><img class="img-fluid" src="{% static 'e_shop/img/'|add:list.image %}"
+            <a href="#" class="img-prod"><img class="img-fluid" src="{% media prod.image %}"
                     alt="Colorlib Template">
-                {% if list.status %}
-                <span class="status">{{ list.status }}</span>
+                {% if prod.status %}
+                <span class="status">{{ prod.status }}</span>
                 {% endif %}
             </a>
             <div class="text py-3 px-3">
-                <h3><a href="#">{{ list.name }}</a></h3>
+                <h3><a href="#">{{ prod.name }}</a></h3>
                 <div class="d-flex">
                     <div class="pricing">
-                        <p class="price"><span {% if list.sale %} class="mr-2 price-dc"
-                                {% endif %}>{{ list.price|add_dollar }}</span>{% if list.sale %}<span
-                                class="price-sale">{% price_sale list.price list.sale %}</span>{% endif %}</p>
+                        <p class="price"><span {% if prod.sale %} class="mr-2 price-dc"
+                                {% endif %}>{{ prod.price|add_dollar }}</span>{% if prod.sale %}<span
+                                class="price-sale">{% price_sale prod.price prod.sale %}</span>{% endif %}</p>
                     </div>
                     <div class="rating">
                         <p class="text-right">
