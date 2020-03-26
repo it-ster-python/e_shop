@@ -1,0 +1,40 @@
+{% load static tags %}
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row d-flex">
+      {% for article in articles%}
+      <div class="col-md-4 d-flex ftco-animate">
+        <div class="blog-entry align-self-stretch">
+          <a href="#" class="block-20">
+            <img class="img-fluid" src="{% media article.image %}" alt="">
+          </a>
+          <div class="text mt-3 d-block pl-md-5">
+            <h3 class="heading mt-3"><a href="#">{{article.title}}</a></h3>
+            <div class="meta mb-3">
+              <div><a href="#">{{article.date}}</a></div>
+              <div><a href="#">{{article.access}}</a></div>
+              <div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{article.comment}}</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <ul>
+            <li><a href="#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

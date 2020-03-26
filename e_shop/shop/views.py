@@ -14,3 +14,8 @@ def products(request):
 def product(request):
     context = {}
     return render(request, "single_product.html", context)
+
+
+def shop_pages(request):
+    context = {}
+    return render(request, 'shop.html', context)

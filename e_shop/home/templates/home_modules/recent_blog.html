@@ -11,7 +11,7 @@
             {% for recent in recentblog %}
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
-                    <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url({% static 'e_shop/img/'|add:recent.images %})">
+                    <a href="{% url 'blog' %}" class="block-20" style="background-image: url({% static 'e_shop/img/'|add:recent.images %})">
                     </a>
                     <div class="text mt-3 d-block">
                         <h3 class="heading mt-3"><a href="#">{{ recent.text }}</a></h3>

@@ -1,78 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from blog.models import Article
+
 
 def blog_page(request):
+    articles = Article.objects.all()
     context = {
-        "blog": [
-            {
-            "image": "image_1.jpg",
-            "heading": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "Dec 6, 2018",
-            "author": "Admin",
-            "comments": "300",
-            },
-            {
-            "image": "image_2.jpg",
-            "heading": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "Apr 31, 2018",
-            "author": "Admin",
-            "comments": "1",
-            },
-            {
-            "image": "image_3.jpg",
-            "heading": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "Jul 18, 2018",
-            "author": "Admin",
-            "comments": "557",
-            },
-            {
-            "image": "image_4.jpg",
-            "heading": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "May 61, 2020",
-            "author": "Admin",
-            "comments": "7",
-            },
-            {
-            "image": "image_5.jpg",
-            "heading": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "Dec 7, 2018",
-            "author": "Admin",
-            "comments": "0",
-            },
-            {
-            "image": "image_6.jpg",
-            "heading": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "Feb 6, 2019",
-            "author": "Admin",
-            "comments": "10",
-            },
-        ]
+        "articles": articles,
     }
-    return render(request, "blog.html", context)
+    return render(request, 'blog.html', context)
 
-def blog_single(request):
+
+def blog_show(request, article_id):
+    article = get_object_or_404(Article,  id=article_id)
+    # comments = Comments.objects.filter(comments_articles=article_id)
     context = {
-        "blogsingle":[
-            {
-            "images": "image_1.jpg",
-            "namenews": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "Dec 22, 2001",
-            "author": "Admin",
-            "comments": "0"
-            },
-            {
-            "images": "image_2.jpg",
-            "namenews": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "July 12, 2018",
-            "author": "Admin",
-            "comments": "19"
-            },
-            {
-            "images": "image_3.jpg",
-            "namenews": "Even the all-powerful Pointing has no control about the blind texts",
-            "date": "May 30, 2028",
-            "author": "Admin",
-            "comments": "85"
-            },
-        ]
+        "article": article,
+        # 'comments': comments
     }
-    return render(request, "blog-single.html", context)
+    return render(request, 'blog_single.html', context)
