@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from time import strftime
 
+<<<<<<< HEAD
 
 def rus_size_valid(value):
     sizes = [40, 42, 44, 46, 48, 50, 52, 54, 56]
@@ -20,6 +21,20 @@ def sale_price(value):
     if 0 < value > 100:
         raise ValidationError(f"Sale '{value}' invalid ")
 
+=======
+def rus_size_valid(value):
+    sizes = [40, 42, 44, 46, 48, 50, 52, 54, 56]
+    if value not in sizes:
+        raise ValidationError("Russia size invalid. Must be in '{}'".format(sizes))
+
+def price_valid(value):
+    if value <0.01:
+        raise ValidationError(f"Price '{value}' very small.")
+
+def sale_price(value):
+    if 0 < value > 100:
+        raise ValidationError(f"Sale '{value}' invalid ")
+>>>>>>> c4efab4b9b7fc2494af5b6ae1326c147162df497
 
 class DressSize(models.Model):
     asian_size = [
@@ -60,6 +75,7 @@ class DressSize(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 class Product(models.Model):

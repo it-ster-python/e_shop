@@ -3,9 +3,9 @@ from shop.models import Product
 
 
 def products(request):
-    prod = Product.objects.all()
+    prods = Product.objects.all()
     context = {
-        "allprod": prod
+        "allprod": prods
     }
     return render(request, "products.html", context)
 
