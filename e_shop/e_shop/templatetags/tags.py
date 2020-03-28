@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -15,5 +16,7 @@ def add_percent(value):
 def add_dollar(value):
     return "$" + str(value)
 
-    # из блог хтмл извлечь все из блог
-    # сделать новое приложение блог
+@register.simple_tag
+def media(value):
+    return settings.MEDIA_URL + value.name
+

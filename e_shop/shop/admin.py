@@ -14,5 +14,6 @@ class AdminProduct(admin.ModelAdmin):
         "is_active"
     )
 
+
 admin.site.register(models.DressSize, AdminDressSize)
 admin.site.register(models.Product, AdminProduct)
