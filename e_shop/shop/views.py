@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from shop.models import Product
 
-
 def products(request):
     prods = Product.objects.all()
     context = {

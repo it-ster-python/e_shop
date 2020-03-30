@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static tags %}
 
 {% block blog %}		
 		<div class="hero-wrap hero-bread" style="background-image: url({% static 'e_shop/img/bg_6.jpg' %});">
@@ -19,14 +19,14 @@
           {% for col in blog %}
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="{% url 'blogsingle' %}" class="block-20" style="background-image: url({% static 'e_shop/img/'|add:col.image %});">
+              <a href="{% url 'blogsingle' col.id %}" class="block-20" style="background-image: url({% media col.image %});">
               </a>
               <div class="text mt-3 d-block pl-md-5">
-                <h3 class="heading mt-3"><a href="#">{{ col.heading }}</a></h3>
+                <h3 class="heading mt-3"><a href="#">{{ col.name }}</a></h3>
                 <div class="meta mb-3">
-                  <div><a href="#">{{ col.date }}</a></div>
+                  <div><a href="#">{{ col.add_time }}</a></div>
                   <div><a href="#">{{ col.author }}</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{ col.comments }}</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{ col.comment_set.count }}</a></div>
                 </div>
               </div>
             </div>
