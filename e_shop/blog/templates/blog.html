@@ -22,7 +22,7 @@
               <a href="{% url 'blogsingle' col.id %}" class="block-20" style="background-image: url({% media col.image %});">
               </a>
               <div class="text mt-3 d-block pl-md-5">
-                <h3 class="heading mt-3"><a href="#">{{ col.name }}</a></h3>
+                <h3 class="heading mt-3"><a href="{% url 'blogsingle' col.id %}">{{ col.name }}</a></h3>
                 <div class="meta mb-3">
                   <div><a href="#">{{ col.add_time }}</a></div>
                   <div><a href="#">{{ col.author }}</a></div>

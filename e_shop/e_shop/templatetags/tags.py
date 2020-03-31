@@ -20,3 +20,7 @@ def add_dollar(value):
 def media(value):
     return settings.MEDIA_URL + value.name
 
+@register.filter
+def add_comment(value):
+    return str(value) + " ""Comments"
+

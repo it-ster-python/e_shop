@@ -1,16 +1,18 @@
-{% load static %}
-<ul class="comment-list">
-    <li class="comment">
-        <div class="vcard bio">
-            <img src="{% static 'e_shop/img/person_1.jpg' %}" alt="Image placeholder">
-        </div>
-        {% for last in last_comment %}
-        <div class="comment-body">
-            <h3>{{ last.comment_author }}</h3>
-            <div class="meta">{{ last.add_time }}</div>
-            <p>{{ last.comment_text }}</p>
-            <p><a href="#" class="reply">Reply</a></p>
-        </div>
-        {% endfor %}
-    </li>
-</ul>
+{% load static tags %}
+<div class="pt-5 mt-5">
+    <h3 class="mb-5">{{ blogsingle.comment_set.count|add_comment }}</h3>
+        <ul class="comment-list">
+            {% for last in last_comment %}
+            <li class="comment">
+                <div class="vcard bio">
+                    <img src="{% static 'e_shop/img/person_1.jpg' %}" alt="Image placeholder">
+                </div>
+                <div class="comment-body">
+                    <h3>{{ last.comment_author }}</h3>
+                    <div class="meta">{{ last.add_time }}</div>
+                    <p>{{ last.comment_text }}</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
