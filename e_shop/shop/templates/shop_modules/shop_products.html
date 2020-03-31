@@ -1,10 +1,13 @@
 {% load static tags %}
+<h1>fuck</h1>
 <section class="ftco-section bg-light">
   <div class="container-fluid">
+!
     <div class="row">
-{% for item in shop %}
+{% for item in allprod %}
       <div class="col-sm col-md-6 col-lg-3 ftco-animate">
         <div class="product">
+          !
           <a href="#" class="img-prod"><img class="img-fluid" src="{% static 'e_shop/img/'|add:item.image %}" alt="Colorlib Template">
             <span class="status">{{ item.sale }}</span>
           </a>

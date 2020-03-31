@@ -41,8 +41,22 @@ class Article(models.Model):
         except Exception:
             pass
 
-# 
-# class Comments(models.Model):
-#     comments_text = models.TextField()
-#     comments_articles = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
-#
+
+class Comments(models.Model):
+    def path_upload(self, filename):
+        return os.path.join(
+                "comments",
+                strftime("%Y/%m"),
+                self.author.replace(" ", "_"), filename)
+    author = models.CharField(max_length=100,
+                              verbose_name=("Author's name"),
+                              help_text=("Author's name"))
+    comments_text = models.TextField()
+    image = models.ImageField(
+        upload_to=path_upload, verbose_name="Author's image")
+    date = models.DateField(default=timezone.now,
+                            verbose_name=('Publication date'),
+                            help_text=('Publication date'))
+    comments_articles = models.ForeignKey(
+                                        Article, related_name="comments",
+                                        on_delete=models.CASCADE)

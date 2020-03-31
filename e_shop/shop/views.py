@@ -11,8 +11,9 @@ def products(request):
 
 
 # def product(request, product_id):
-def product(request):
-    context = {}
+def product(request, product_id):
+    # product =
+    context = {"product": Product.objects.get(id=product_id)}
     return render(request, "single_product.html", context)
 
 

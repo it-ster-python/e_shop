@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -21,4 +22,4 @@ def add_dollar(value):
 @register.simple_tag
 def media(value):
     print(dir(value))
-    return "/media/" + value.name
+    return settings.MEDIA_URL + value.name
