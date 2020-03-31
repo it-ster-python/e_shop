@@ -1,20 +1,17 @@
 {% load static tags %}
-
 <section class="ftco-section">
   <div class="container">
     <div class="row d-flex">
-      {% for article in articles%}
+      {% for article in articles %}
       <div class="col-md-4 d-flex ftco-animate">
         <div class="blog-entry align-self-stretch">
-          <a href="url 'blog_show' article_id = blog_show.id" class="block-20">
-            <img class="img-fluid" src="{% media article.image %}" alt="">
-          </a>
+          <a href="#" class="block-20"><img class="img-fluid" src="{% media article.image %}"alt="Colorlib Template">
           <div class="text mt-3 d-block pl-md-5">
             <h3 class="heading mt-3"><a href="#">{{article.title}}</a></h3>
             <div class="meta mb-3">
               <div><a href="#">{{article.date}}</a></div>
               <div><a href="#">{{article.access}}</a></div>
-              <div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{article.comment}}</a></div>
+              <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
             </div>
           </div>
         </div>
