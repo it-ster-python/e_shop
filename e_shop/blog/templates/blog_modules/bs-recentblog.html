@@ -1,15 +1,15 @@
-{% load static %}
+{% load static tags %}
 <div class="sidebar-box ftco-animate">
     <h3>Recent Blog</h3>
-    {% for block21 in blogsingle %}
+    {% for block21 in blogrecent %}
     <div class="block-21 mb-4 d-flex">
-        <a class="blog-img mr-4" style="background-image: url({% static 'e_shop/img/'|add:block21.images %});"></a>
+        <a class="blog-img mr-4" style="background-image: url({% media block21.image %});"></a>
         <div class="text">
-            <h3 class="heading"><a href="#">{{ block21.namenews }}</a></h3>
+            <h3 class="heading"><a href="#">{{ block21.name }}</a></h3>
             <div class="meta">
-                <div><a href="#"><span class="icon-calendar"></span> {{ block21.date }}</a></div>
-                <div><a href="#"><span class="icon-person"></span> {{ block21.author }}</a></div>
-                <div><a href="#"><span class="icon-chat"></span>{{ block21.comments }}</a></div>
+                <div><a href="{% url 'blogsingle' block21.id %}"><span class="icon-calendar"></span> {{ block21.add_time }}</a></div>
+                <div><a href="{% url 'blogsingle' block21.id %}"><span class="icon-person"></span> {{ block21.author }}</a></div>
+                <div><a href="{% url 'blogsingle' block21.id %}"><span class="icon-chat"></span>{{ block21.comment_set.count }}</a></div>
             </div>
         </div>
     </div>

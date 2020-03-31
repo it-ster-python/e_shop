@@ -8,10 +8,8 @@ def products(request):
     }
     return render(request, "products.html", context)
 
-# def product(request, product_id):
 def product(request, product_id):
     context = {
-        "product": Product.objects.get(id=product_id)
+        "product": Product.objects.get(id=product_id)  #так не делать
     }
-    print(context)
     return render(request, "single_product.html", context)

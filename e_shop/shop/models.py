@@ -3,18 +3,24 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from time import strftime
 
+
 def rus_size_valid(value):
     sizes = [40, 42, 44, 46, 48, 50, 52, 54, 56]
     if value not in sizes:
-        raise ValidationError("Russia size invalid. Must be in '{}'".format(sizes))
+        raise ValidationError(
+            "Russia size invalid. Must be in '{}'".format(sizes)
+        )
+
 
 def price_valid(value):
-    if value <0.01:
+    if value < 0.01:
         raise ValidationError(f"Price '{value}' very small.")
+
 
 def sale_price(value):
     if 0 < value > 100:
         raise ValidationError(f"Sale '{value}' invalid ")
+
 
 class DressSize(models.Model):
     asian_size = [
@@ -26,8 +32,8 @@ class DressSize(models.Model):
         ["XL", "Extra Large"],
         ["XXL", "2 Extra Large"],
         ["XXL", "2 Extra Large"],
-        ["3XL", "3 Extra Large"]
-        ]
+        ["3XL", "3 Extra Large"],
+    ]
     internetional_size = [
         ["XXS", "2 Extra Small"],
         ["XS", "Extra Small"],
@@ -37,12 +43,20 @@ class DressSize(models.Model):
         ["XL", "Extra Large"],
         ["XXL", "2 Extra Large"],
         ["3XL", "3 Extra Large"],
-        ["4XL", "4 Extra Large"]
-        ]
+        ["4XL", "4 Extra Large"],
+    ]
     name = models.CharField(max_length=25, verbose_name="Size name.")
-    asia = models.CharField(max_length=3, choices=asian_size, verbose_name="Asia size.")
-    russia = models.SmallIntegerField(validators=[rus_size_valid], verbose_name="Russian size.")
-    internetional = models.CharField(max_length=3, choices=internetional_size, verbose_name="Internetional size.")
+    asia = models.CharField(
+        max_length=3, choices=asian_size, verbose_name="Asia size."
+    )
+    russia = models.SmallIntegerField(
+        validators=[rus_size_valid], verbose_name="Russian size."
+    )
+    internetional = models.CharField(
+        max_length=3,
+        choices=internetional_size,
+        verbose_name="Internetional size.",
+    )
 
     class Meta:
         db_table = "sizes"
@@ -53,24 +67,30 @@ class DressSize(models.Model):
         return self.name
 
 
-
 class Product(models.Model):
-
     def path_upload(self, filename):
         return os.path.join(
             "products",
             strftime("%Y/%m"),
             self.name.replace(" ", "_"),
-            filename
+            filename,
         )
 
-    size = models.ForeignKey(DressSize, related_name="products", on_delete=models.CASCADE)
+    size = models.ForeignKey(
+        DressSize, related_name="products", on_delete=models.CASCADE
+    )
     name = models.CharField(max_length=75, verbose_name="Product name.")
-    price = models.FloatField(validators=[price_valid], verbose_name="Product price.")
-    sale = models.FloatField(null=True, validators=[sale_price], verbose_name="Product sale.")
+    price = models.FloatField(
+        validators=[price_valid], verbose_name="Product price."
+    )
+    sale = models.FloatField(
+        null=True, validators=[sale_price], verbose_name="Product sale."
+    )
     description = models.TextField(verbose_name="Product description")
     count = models.PositiveSmallIntegerField(verbose_name="Counts dresses.")
-    image = models.ImageField(upload_to=path_upload, verbose_name="Product image.")
+    image = models.ImageField(
+        upload_to=path_upload, verbose_name="Product image."
+    )
     is_active = models.BooleanField(default=True, verbose_name="Active.")
 
     class Meta:

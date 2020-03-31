@@ -1,12 +1,12 @@
 {% load static %}
 <div class="pt-5 mt-5">
-    <h3 class="mb-5">6 Comments</h3>
+    <h3 class="mb-5">{{blogsingle.comment.all.count}} Comments</h3>
     {% include "blog_modules/bs-commentslist.html" %}
     <!-- END comment-list -->
 
     <div class="comment-form-wrap pt-5">
         <h3 class="mb-5">Leave a comment</h3>
-        <form action="#" class="p-5 bg-light">
+        <!-- <form action="#" class="p-5 bg-light">
             <div class="form-group">
                 <label for="name">Name *</label>
                 <input type="text" class="form-control" id="name">
@@ -28,6 +28,12 @@
                 <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
             </div>
 
+        </form> -->
+
+        <form action="{% url 'blogsingle' blogsingle.id %}" method="POST"   >
+            {{ comment_form }}
+            <input type="submit" value="Go">
         </form>
+
     </div>
 </div>
